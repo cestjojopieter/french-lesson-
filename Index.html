@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Belajar Bahasa Prancis — @cestjojopieter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bleu: #002395;
+      --rouge: #ED2939;
+      --blanc: #FAFAFA;
+      --creme: #FFF8EE;
+      --or: #C9A84C;
+      --gris: #3a3a3a;
+      --gris-clair: #f0ece4;
+      --ombre: rgba(0,35,149,0.10);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--creme);
+      color: var(--gris);
+      line-height: 1.7;
+    }
+
+    /* ─── PRINT / PAGE ─── */
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white; }
+      .page { page-break-after: always; box-shadow: none; border: none; margin: 0; border-radius: 0; }
+      footer { position: fixed; bottom: 0; width: 100%; }
+    }
+
+    /* ─── DOWNLOAD BAR ─── */
+    .download-bar {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bleu);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.6rem 2rem;
+    }
+    .download-bar span { color: white; font-size: 0.85rem; letter-spacing: 0.05em; }
+    .download-bar a {
+      background: var(--or); color: var(--bleu);
+      font-weight: 700; padding: 0.4rem 1.2rem;
+      border-radius: 2px; text-decoration: none; font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+    .download-bar a:hover { background: white; }
+
+    /* ─── PAGE WRAPPER ─── */
+    .page {
+      max-width: 820px;
+      margin: 2.5rem auto;
+      background: white;
+      border-radius: 4px;
+      box-shadow: 0 8px 48px var(--ombre);
+      overflow: hidden;
+      border-top: 8px solid var(--bleu);
+    }
+
+    /* ─── COVER ─── */
+    .cover {
+      background: var(--bleu);
+      color: white;
+      padding: 3.5rem 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: "🇫🇷";
+      position: absolute; top: -10px; right: 2rem;
+      font-size: 9rem; opacity: 0.12;
+    }
+    .cover .label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.75rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--or);
+      margin-bottom: 0.6rem;
+    }
+    .cover h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 900; line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+    .cover h1 em { color: var(--or); font-style: italic; }
+    .cover .sub {
+      font-size: 1rem; opacity: 0.85; margin-bottom: 1.5rem;
+    }
+    .cover .tricolor {
+      display: flex; gap: 0; margin-top: 1.5rem; border-radius: 2px; overflow: hidden;
+      height: 6px; width: 120px;
+    }
+    .cover .tricolor span { flex: 1; }
+    .cover .tricolor .b1 { background: #002395; }
+    .cover .tricolor .b2 { background: white; }
+    .cover .tricolor .b3 { background: #ED2939; }
+
+    /* ─── CONTENT AREA ─── */
+    .content { padding: 2.5rem 3rem; }
+
+    /* ─── SECTION HEADERS ─── */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--bleu);
+      border-left: 5px solid var(--rouge);
+      padding-left: 0.8rem;
+      margin: 2.2rem 0 1rem;
+      line-height: 1.2;
+    }
+    .section-sub {
+      font-size: 0.8rem; font-weight: 500; color: var(--or);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 0.2rem; display: block;
+    }
+
+    /* ─── ALPHABET TABLE ─── */
+    .alpha-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 0.6rem;
+      margin: 1.2rem 0;
+    }
+    .alpha-card {
+      border: 1.5px solid #e8e0d0;
+      border-radius: 6px;
+      padding: 0.55rem 0.7rem;
+      background: var(--gris-clair);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .alpha-card:hover { border-color: var(--bleu); background: #eef2ff; }
+    .alpha-card .letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 900;
+      color: var(--bleu); display: block; line-height: 1;
+    }
+    .alpha-card .nom { font-size: 0.82rem; color: var(--gris); }
+    .alpha-card .api { font-size: 0.78rem; color: var(--rouge); font-family: 'Courier Prime', monospace; }
+    .alpha-card .indo { font-size: 0.75rem; color: #666; margin-top: 0.15rem; }
+
+    /* ─── DIGRAMME ─── */
+    .digramme-section { margin: 1rem 0; }
+    .digramme-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--rouge); margin-bottom: 0.5rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .digramme-table { width: 100%; border-collapse: collapse; margin-bottom: 0.8rem; }
+    .digramme-table th {
+      background: var(--bleu); color: white;
+      font-size: 0.78rem; text-align: left;
+      padding: 0.4rem 0.7rem; letter-spacing: 0.05em;
+    }
+    .digramme-table td { padding: 0.38rem 0.7rem; font-size: 0.85rem; vertical-align: top; }
+    .digramme-table tr:nth-child(even) td { background: var(--gris-clair); }
+    .digramme-table .dg { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; color: var(--bleu); }
+    .digramme-table .api-cell { font-family: 'Courier Prime', monospace; color: var(--rouge); font-size: 0.82rem; }
+
+    /* ─── PHRASE EXERCISE ─── */
+    .exercise-box {
+      background: #f5f0ff;
+      border: 2px solid var(--bleu);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.2rem 0;
+    }
+    .exercise-box h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; color: var(--bleu);
+      margin-bottom: 0.7rem;
+    }
+    .phrase-fr { font-size: 1rem; font-weight: 600; color: var(--gris); }
+    .phrase-api { font-family: 'Courier Prime', monospace; font-size: 0.85rem; color: var(--rouge); }
+    .phrase-id { font-size: 0.88rem; color: #555; font-style: italic; }
+    .word-breakdown { margin-top: 0.8rem; }
+    .word-breakdown table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    .word-breakdown td { padding: 0.3rem 0.5rem; border-bottom: 1px solid #e0d8f0; }
+    .word-breakdown td:first-child { font-weight: 700; color: var(--bleu); }
+    .word-breakdown td:nth-child(2) { font-family: 'Courier Prime', monospace; color: var(--rouge); }
+
+    /* ─── SUBJECT TABLE ─── */
+    .subj-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    .subj-table th { background: var(--rouge); color: white; padding: 0.45rem 0.8rem; font-size: 0.82rem; text-align: left; }
+    .subj-table td { padding: 0.4rem 0.8rem; font-size: 0.88rem; border-bottom: 1px solid #e8e0d0; }
+    .subj-table tr:nth-child(even) td { background: var(--gris-clair); }
+    .subj-table .fr { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--bleu); }
+    .subj-table .api-s { font-family: 'Courier Prime', monospace; color: var(--rouge); font-size: 0.8rem; }
+
+    /* ─── CONJUGATION TABLE ─── */
+    .conj-wrap { overflow-x: auto; margin: 1rem 0; }
+    .conj-table { width: 100%; border-collapse: collapse; min-width: 500px; }
+    .conj-table th { background: var(--bleu); color: white; padding: 0.45rem 0.8rem; font-size: 0.82rem; }
+    .conj-table td { padding: 0.42rem 0.8rem; font-size: 0.88rem; border-bottom: 1px solid #e8e0d0; }
+    .conj-table tr:nth-child(even) td { background: #eef2ff; }
+    .conj-table .fr-c { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--rouge); font-size: 1rem; }
+    .conj-table .api-c { font-family: 'Courier Prime', monospace; color: #666; font-size: 0.8rem; }
+
+    /* ─── ARTICLE TABLE ─── */
+    .art-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    .art-table th { background: var(--or); color: var(--bleu); padding: 0.45rem 0.8rem; font-size: 0.82rem; font-weight: 700; }
+    .art-table td { padding: 0.42rem 0.8rem; font-size: 0.88rem; border-bottom: 1px solid #e8e0d0; vertical-align: top; }
+    .art-table tr:nth-child(even) td { background: var(--gris-clair); }
+    .art-table .fr-a { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--bleu); font-size: 1.05rem; }
+
+    /* ─── GENDER PATTERNS ─── */
+    .gender-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 1rem 0; }
+    @media (max-width: 600px) { .gender-grid { grid-template-columns: 1fr; } }
+    .gender-card {
+      border-radius: 6px; padding: 0.7rem 0.9rem;
+      border: 1.5px solid #e0d8d0;
+      background: white;
+    }
+    .gender-card.masc { border-left: 4px solid var(--bleu); }
+    .gender-card.fem { border-left: 4px solid var(--rouge); }
+    .gender-card .gc-title { font-weight: 700; font-size: 0.82rem; margin-bottom: 0.25rem; }
+    .gender-card.masc .gc-title { color: var(--bleu); }
+    .gender-card.fem .gc-title { color: var(--rouge); }
+    .gender-card .gc-rule { font-size: 0.8rem; color: #444; margin-bottom: 0.2rem; }
+    .gender-card .gc-ex { font-size: 0.78rem; }
+    .gender-card .gc-ex .fr-w { font-family: 'Playfair Display', serif; font-weight: 700; }
+    .gender-card .gc-ex .api-w { font-family: 'Courier Prime', monospace; color: var(--rouge); }
+    .gender-card .gc-ex .id-w { color: #777; font-style: italic; }
+
+    /* ─── EXERCISE ─── */
+    .exo-box {
+      background: #fffbf0;
+      border: 2px dashed var(--or);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .exo-box h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--or); margin-bottom: 0.8rem; }
+    .exo-item { margin-bottom: 0.6rem; font-size: 0.88rem; }
+    .exo-item .q { font-weight: 600; color: var(--gris); }
+    .exo-item .hint { color: #888; font-size: 0.8rem; }
+
+    /* ─── NOTE CIRCLE ─── */
+    .note-circle-wrap {
+      display: flex; justify-content: center; margin: 2rem 0;
+    }
+    .note-circle {
+      border: 3px solid var(--rouge);
+      border-radius: 50%;
+      width: 230px; height: 230px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 1.2rem;
+      background: #fff5f5;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(237,41,57,0.15);
+    }
+    .note-circle p { font-size: 0.8rem; line-height: 1.4; color: var(--rouge); font-weight: 600; }
+    .note-circle .big { font-size: 1.1rem; font-weight: 900; font-family: 'Playfair Display', serif; color: var(--bleu); display: block; margin-top: 0.5rem; }
+    .note-circle::before {
+      content: "📝"; position: absolute; top: -14px; font-size: 1.6rem;
+    }
+
+    /* ─── INFO BOX ─── */
+    .info-box {
+      background: #f0f4ff;
+      border-left: 4px solid var(--bleu);
+      border-radius: 0 6px 6px 0;
+      padding: 0.8rem 1.1rem;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+    .info-box strong { color: var(--bleu); }
+
+    /* ─── WARNING BOX ─── */
+    .warn-box {
+      background: #fff5f0;
+      border-left: 4px solid var(--rouge);
+      border-radius: 0 6px 6px 0;
+      padding: 0.8rem 1.1rem;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+    .warn-box strong { color: var(--rouge); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bleu);
+      color: white;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+    footer span { color: var(--or); font-weight: 700; }
+
+    /* ─── PAGE DIVIDER ─── */
+    .page-divider {
+      border: none;
+      border-top: 3px dashed #e0d8c8;
+      margin: 2rem 0;
+    }
+
+    /* ─── PILL ─── */
+    .pill {
+      display: inline-block;
+      background: var(--bleu); color: white;
+      border-radius: 20px; padding: 0.15rem 0.6rem;
+      font-size: 0.72rem; font-weight: 700; margin: 0.1rem;
+      letter-spacing: 0.05em;
+    }
+    .pill.rouge { background: var(--rouge); }
+    .pill.or { background: var(--or); color: var(--bleu); }
+
+    p { margin-bottom: 0.6rem; font-size: 0.9rem; }
+    ul { margin: 0.4rem 0 0.8rem 1.4rem; font-size: 0.88rem; }
+    li { margin-bottom: 0.25rem; }
+  </style>
+</head>
+<body>
+
+<!-- DOWNLOAD BAR -->
+<div class="download-bar no-print">
+  <span>📚 Résumé Bahasa Prancis — @cestjojopieter</span>
+  <a href="javascript:window.print()">⬇ Download / Print PDF</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 1 — COVER + ALPHABET
+═══════════════════════════════════════════════ -->
+<div class="page">
+  <!-- COVER -->
+  <div class="cover">
+    <div class="label">Résumé · Belajar Bahasa Prancis</div>
+    <h1>Bonjour,<br/><em>Indonesia!</em></h1>
+    <div class="sub">Panduan belajar bahasa Prancis untuk penutur Bahasa Indonesia<br/>oleh <strong>@cestjojopieter</strong></div>
+    <div class="tricolor"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+  </div>
+
+  <div class="content">
+
+    <!-- SECTION 1: ALPHABET -->
+    <span class="section-sub">Bagian 1</span>
+    <h2 class="section-title">L'Alphabet Français<br/><small style="font-size:0.9rem;font-weight:400;color:#555">Alfabet Bahasa Prancis</small></h2>
+
+    <p>Bahasa Prancis memakai <strong>26 huruf</strong> yang sama seperti huruf Latin — sama seperti bahasa Indonesia! Tapi cara membacanya <em>sangat berbeda</em>. Di bawah ini kamu akan menemukan setiap huruf beserta:</p>
+    <ul>
+      <li><strong>Nama huruf</strong> dalam bahasa Prancis (cara menyebutnya)</li>
+      <li><strong>API</strong> = Alfabet Fonetik Internasional / Alphabet Phonétique Internationale (IPA)</li>
+      <li><strong>Panduan bunyi terdekat</strong> dalam bahasa Indonesia</li>
+    </ul>
+
+    <div class="info-box">
+      <strong>💡 Tip:</strong> API / IPA adalah sistem simbol internasional untuk menggambarkan bunyi kata. Di résumé ini, setiap kata Prancis akan disertai simbol API agar kamu bisa membaca dengan benar!
+    </div>
+
+    <div class="alpha-grid">
+      <!-- A -->
+      <div class="alpha-card">
+        <span class="letter">A a</span>
+        <div class="nom">Nom: <em>ah</em></div>
+        <div class="api">API: /a/</div>
+        <div class="indo">≈ "a" dalam "anak"</div>
+      </div>
+      <!-- B -->
+      <div class="alpha-card">
+        <span class="letter">B b</span>
+        <div class="nom">Nom: <em>bé</em></div>
+        <div class="api">API: /be/</div>
+        <div class="indo">≈ "be" dalam "beli"</div>
+      </div>
+      <!-- C -->
+      <div class="alpha-card">
+        <span class="letter">C c</span>
+        <div class="nom">Nom: <em>cé</em></div>
+        <div class="api">API: /se/</div>
+        <div class="indo">≈ sebelum e/i: "s"; sebelum a/o/u: "k"</div>
+      </div>
+      <!-- D -->
+      <div class="alpha-card">
+        <span class="letter">D d</span>
+        <div class="nom">Nom: <em>dé</em></div>
+        <div class="api">API: /de/</div>
+        <div class="indo">≈ "de" dalam "depan"</div>
+      </div>
+      <!-- E -->
+      <div class="alpha-card">
+        <span class="letter">E e</span>
+        <div class="nom">Nom: <em>e / eu</em></div>
+        <div class="api">API: /ə/ atau /e/</div>
+        <div class="indo">≈ "e" dalam "empat" (bervariasi)</div>
+      </div>
+      <!-- F -->
+      <div class="alpha-card">
+        <span class="letter">F f</span>
+        <div class="nom">Nom: <em>effe</em></div>
+        <div class="api">API: /ɛf/</div>
+        <div class="indo">≈ "f" dalam "foto"</div>
+      </div>
+      <!-- G -->
+      <div class="alpha-card">
+        <span class="letter">G g</span>
+        <div class="nom">Nom: <em>gé</em></div>
+        <div class="api">API: /ʒe/</div>
+        <div class="indo">≈ sebelum e/i: seperti "j" dalam "journal"; sebelum a/o: "g" biasa</div>
+      </div>
+      <!-- H -->
+      <div class="alpha-card">
+        <span class="letter">H h</span>
+        <div class="nom">Nom: <em>ache</em></div>
+        <div class="api">API: /aʃ/</div>
+        <div class="indo">≈ H tidak berbunyi di Prancis (muet)</div>
+      </div>
+      <!-- I -->
+      <div class="alpha-card">
+        <span class="letter">I i</span>
+        <div class="nom">Nom: <em>i</em></div>
+        <div class="api">API: /i/</div>
+        <div class="indo">≈ "i" dalam "ikan"</div>
+      </div>
+      <!-- J -->
+      <div class="alpha-card">
+        <span class="letter">J j</span>
+        <div class="nom">Nom: <em>ji</em></div>
+        <div class="api">API: /ʒi/</div>
+        <div class="indo">≈ seperti "zh" (antara "j" & "y"), bukan "j" keras</div>
+      </div>
+      <!-- K -->
+      <div class="alpha-card">
+        <span class="letter">K k</span>
+        <div class="nom">Nom: <em>ka</em></div>
+        <div class="api">API: /ka/</div>
+        <div class="indo">≈ "k" dalam "kaki"</div>
+      </div>
+      <!-- L -->
+      <div class="alpha-card">
+        <span class="letter">L l</span>
+        <div class="nom">Nom: <em>elle</em></div>
+        <div class="api">API: /ɛl/</div>
+        <div class="indo">≈ "l" dalam "laut"</div>
+      </div>
+      <!-- M -->
+      <div class="alpha-card">
+        <span class="letter">M m</span>
+        <div class="nom">Nom: <em>emme</em></div>
+        <div class="api">API: /ɛm/</div>
+        <div class="indo">≈ "m" dalam "makan"</div>
+      </div>
+      <!-- N -->
+      <div class="alpha-card">
+        <span class="letter">N n</span>
+        <div class="nom">Nom: <em>enne</em></div>
+        <div class="api">API: /ɛn/</div>
+        <div class="indo">≈ "n" dalam "nasi"</div>
+      </div>
+      <!-- O -->
+      <div class="alpha-card">
+        <span class="letter">O o</span>
+        <div class="nom">Nom: <em>o</em></div>
+        <div class="api">API: /o/ atau /ɔ/</div>
+        <div class="indo">≈ "o" dalam "orang"</div>
+      </div>
+      <!-- P -->
+      <div class="alpha-card">
+        <span class="letter">P p</span>
+        <div class="nom">Nom: <em>pé</em></div>
+        <div class="api">API: /pe/</div>
+        <div class="indo">≈ "p" dalam "pasar"</div>
+      </div>
+      <!-- Q -->
+      <div class="alpha-card">
+        <span class="letter">Q q</span>
+        <div class="nom">Nom: <em>ku</em></div>
+        <div class="api">API: /ky/</div>
+        <div class="indo">≈ selalu diikuti "u" → bunyi "k" keras</div>
+      </div>
+      <!-- R -->
+      <div class="alpha-card">
+        <span class="letter">R r</span>
+        <div class="nom">Nom: <em>erre</em></div>
+        <div class="api">API: /ɛʁ/</div>
+        <div class="indo">≈ "r" tenggorokan, seperti berkumur pelan</div>
+      </div>
+      <!-- S -->
+      <div class="alpha-card">
+        <span class="letter">S s</span>
+        <div class="nom">Nom: <em>esse</em></div>
+        <div class="api">API: /ɛs/</div>
+        <div class="indo">≈ "s" dalam "satu"; antara vokal: bunyi "z"</div>
+      </div>
+      <!-- T -->
+      <div class="alpha-card">
+        <span class="letter">T t</span>
+        <div class="nom">Nom: <em>té</em></div>
+        <div class="api">API: /te/</div>
+        <div class="indo">≈ "t" dalam "tahu"</div>
+      </div>
+      <!-- U -->
+      <div class="alpha-card">
+        <span class="letter">U u</span>
+        <div class="nom">Nom: <em>u</em></div>
+        <div class="api">API: /y/</div>
+        <div class="indo">≈ Tidak ada di Indonesia! Ucapkan "i" sambil memonyongkan bibir</div>
+      </div>
+      <!-- V -->
+      <div class="alpha-card">
+        <span class="letter">V v</span>
+        <div class="nom">Nom: <em>vé</em></div>
+        <div class="api">API: /ve/</div>
+        <div class="indo">≈ "v" dalam "vila" (gigi atas ke bibir bawah)</div>
+      </div>
+      <!-- W -->
+      <div class="alpha-card">
+        <span class="letter">W w</span>
+        <div class="nom">Nom: <em>double vé</em></div>
+        <div class="api">API: /dubləve/</div>
+        <div class="indo">≈ bunyi "v" atau "w" (kata serapan)</div>
+      </div>
+      <!-- X -->
+      <div class="alpha-card">
+        <span class="letter">X x</span>
+        <div class="nom">Nom: <em>iks</em></div>
+        <div class="api">API: /iks/</div>
+        <div class="indo">≈ "ks" dalam "taksi"</div>
+      </div>
+      <!-- Y -->
+      <div class="alpha-card">
+        <span class="letter">Y y</span>
+        <div class="nom">Nom: <em>i grec</em></div>
+        <div class="api">API: /iɡʁɛk/</div>
+        <div class="indo">≈ bunyi "i" atau "y" tergantung konteks</div>
+      </div>
+      <!-- Z -->
+      <div class="alpha-card">
+        <span class="letter">Z z</span>
+        <div class="nom">Nom: <em>zède</em></div>
+        <div class="api">API: /zɛd/</div>
+        <div class="indo">≈ "z" dalam "zona"</div>
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <strong>⚠️ Huruf yang sering bikin bingung:</strong><br/>
+      Huruf <strong>E</strong> punya banyak bunyi: é = /e/ (tertutup), è/ê = /ɛ/ (terbuka), e = /ə/ (schwa/hampir diam). Huruf <strong>U</strong> bahasa Prancis TIDAK sama dengan "u" bahasa Indonesia — bibir dimonyongkan seperti mau bilang "u" tapi lidah di posisi "i"!
+    </div>
+
+  </div>
+  <footer>follow <span>@cestjojopieter</span> so you won't feel alone in learning french 🇫🇷</footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 2 — DIGRAMMES
+═══════════════════════════════════════════════ -->
+<div class="page">
+  <div class="content">
+
+    <span class="section-sub">Bagian 2</span>
+    <h2 class="section-title">Les Digrammes<br/><small style="font-size:0.9rem;font-weight:400;color:#555">Kombinasi Huruf &amp; Bunyinya</small></h2>
+
+    <p>Digramme adalah <strong>gabungan dua (atau lebih) huruf</strong> yang menghasilkan satu bunyi baru. Ini salah satu alasan kenapa ejaan Prancis kelihatan sulit — tapi setelah hafal pola ini, kamu sudah kuasai lebih dari separuh pengucapannya!</p>
+
+    <!-- VOCALIQUES -->
+    <div class="digramme-section">
+      <div class="digramme-title">🔵 Digrammes Vocaliques (Vokal Ganda)</div>
+      <p style="font-size:0.83rem;margin-bottom:0.5rem;">Gabungan huruf vokal yang menghasilkan bunyi vokal tunggal.</p>
+      <table class="digramme-table">
+        <tr><th>Digramme</th><th>API</th><th>Contoh (Prancis)</th><th>Arti</th><th>Panduan Bunyi Indonesia</th></tr>
+        <tr><td class="dg">ai / ei</td><td class="api-cell">/ɛ/</td><td><em>maison, neige</em></td><td>rumah, salju</td><td>≈ "è" terbuka, seperti "e" dalam "ember"</td></tr>
+        <tr><td class="dg">au / eau</td><td class="api-cell">/o/</td><td><em>automne, beau</em></td><td>musim gugur, indah</td><td>≈ "o" dalam "obat"</td></tr>
+        <tr><td class="dg">eu / œu</td><td class="api-cell">/ø/ atau /œ/</td><td><em>feu, cœur</em></td><td>api, hati</td><td>≈ "e" dengan bibir dimonyongkan seperti "o"</td></tr>
+        <tr><td class="dg">oi</td><td class="api-cell">/wa/</td><td><em>moi, voix</em></td><td>aku, suara</td><td>≈ "wa" dalam "wayang"</td></tr>
+        <tr><td class="dg">ou</td><td class="api-cell">/u/</td><td><em>vous, jour</em></td><td>kalian, hari</td><td>≈ "u" dalam "ular"</td></tr>
+        <tr><td class="dg">ui</td><td class="api-cell">/ɥi/</td><td><em>nuit, lui</em></td><td>malam, dia (lk)</td><td>≈ "u-i" sangat cepat</td></tr>
+      </table>
+    </div>
+
+    <!-- CONSONANTIQUES -->
+    <div class="digramme-section">
+      <div class="digramme-title">🔴 Digrammes Consonantiques (Konsonan Ganda)</div>
+      <p style="font-size:0.83rem;margin-bottom:0.5rem;">Gabungan huruf konsonan yang menghasilkan satu bunyi konsonan.</p>
+      <table class="digramme-table">
+        <tr><th>Digramme</th><th>API</th><th>Contoh (Prancis)</th><th>Arti</th><th>Panduan Bunyi Indonesia</th></tr>
+        <tr><td class="dg">ch</td><td class="api-cell">/ʃ/</td><td><em>chat, chocolat</em></td><td>kucing, cokelat</td><td>≈ "sy" dalam "syukur" / "sh" dalam bahasa Inggris</td></tr>
+        <tr><td class="dg">gn</td><td class="api-cell">/ɲ/</td><td><em>montagne, ligne</em></td><td>gunung, garis</td><td>≈ "ny" dalam "nyaman"</td></tr>
+        <tr><td class="dg">ph</td><td class="api-cell">/f/</td><td><em>photo, téléphone</em></td><td>foto, telepon</td><td>≈ "f" dalam "foto"</td></tr>
+        <tr><td class="dg">th</td><td class="api-cell">/t/</td><td><em>thé, théâtre</em></td><td>teh, teater</td><td>≈ "t" biasa (bukan "th" Inggris)</td></tr>
+        <tr><td class="dg">qu</td><td class="api-cell">/k/</td><td><em>qui, que</em></td><td>siapa, bahwa</td><td>≈ "k" dalam "kapal"</td></tr>
+        <tr><td class="dg">gu</td><td class="api-cell">/ɡ/</td><td><em>guerre, guide</em></td><td>perang, panduan</td><td>≈ "g" keras dalam "gajah"</td></tr>
+      </table>
+    </div>
+
+    <!-- NASAUX -->
+    <div class="digramme-section">
+      <div class="digramme-title">🟡 Digrammes Nasaux (Vokal Nasal)</div>
+      <p style="font-size:0.83rem;margin-bottom:0.5rem;">Bunyi vokal yang "dimbunyikan lewat hidung". Tidak ada padanannya persis di bahasa Indonesia!</p>
+      <table class="digramme-table">
+        <tr><th>Digramme</th><th>API</th><th>Contoh (Prancis)</th><th>Arti</th><th>Panduan Bunyi Indonesia</th></tr>
+        <tr><td class="dg">an / am / en / em</td><td class="api-cell">/ɑ̃/</td><td><em>enfant, temps</em></td><td>anak, waktu</td><td>≈ "an" diucapkan lewat hidung, tanpa "n" yang keras</td></tr>
+        <tr><td class="dg">in / im / yn / ym / ain / ein</td><td class="api-cell">/ɛ̃/</td><td><em>fin, pain, rein</em></td><td>selesai, roti, ginjal</td><td>≈ "in" nasalisasi — seperti orang pilek bilang "in"</td></tr>
+        <tr><td class="dg">on / om</td><td class="api-cell">/ɔ̃/</td><td><em>bon, tomber</em></td><td>bagus, jatuh</td><td>≈ "on" lewat hidung, tanpa "n" yang jelas</td></tr>
+        <tr><td class="dg">un / um</td><td class="api-cell">/œ̃/</td><td><em>un, parfum</em></td><td>satu, parfum</td><td>≈ "oe-n" nasalisasi (semakin jarang dipakai)</td></tr>
+      </table>
+    </div>
+
+    <div class="info-box">
+      <strong>💡 Rahasia vokal nasal:</strong> Ketika kamu melihat vokal + n/m sebelum konsonan atau di akhir kata, kemungkinan besar itu vokal nasal — artinya "n" atau "m"-nya <em>tidak dibunyikan sendiri</em>, tapi membuat vokal sebelumnya jadi "hidung"!
+    </div>
+
+    <!-- EXERCISE PHRASE -->
+    <hr class="page-divider"/>
+    <div class="exercise-box">
+      <h4>✏️ Latihan — Satu Kalimat dengan 3 Jenis Digramme</h4>
+      <p style="font-size:0.8rem;margin-bottom:0.7rem;">Kalimat di bawah ini mengandung contoh dari <span class="pill">Vocalique</span> <span class="pill rouge">Consonantique</span> <span class="pill or">Nasal</span></p>
+
+      <div class="phrase-fr">« Un enfant chantait sous la pluie en montagne avec son bon ami. »</div>
+      <div class="phrase-api">/œ̃ ɑ̃fɑ̃ ʃɑ̃tɛ su la plɥi ɑ̃ mɔ̃taɲ avɛk sɔ̃ bɔ̃ ami/</div>
+      <div class="phrase-id" style="margin-top:0.4rem;">🇮🇩 <em>"Seorang anak bernyanyi di bawah hujan di gunung bersama teman baiknya."</em></div>
+
+      <div class="word-breakdown">
+        <table>
+          <tr><th style="text-align:left;color:var(--bleu);font-size:0.78rem;padding:0.3rem 0.5rem;background:#f0f4ff;">Kata</th><th style="text-align:left;color:var(--bleu);font-size:0.78rem;padding:0.3rem 0.5rem;background:#f0f4ff;">API</th><th style="text-align:left;color:var(--bleu);font-size:0.78rem;padding:0.3rem 0.5rem;background:#f0f4ff;">Arti</th><th style="text-align:left;color:var(--bleu);font-size:0.78rem;padding:0.3rem 0.5rem;background:#f0f4ff;">Jenis Digramme</th></tr>
+          <tr><td><strong>Un</strong></td><td class="api-cell">/œ̃/</td><td>seorang / satu</td><td><span class="pill or" style="font-size:0.65rem;">Nasal (un)</span></td></tr>
+          <tr><td><strong>enfant</strong></td><td class="api-cell">/ɑ̃fɑ̃/</td><td>anak</td><td><span class="pill or" style="font-size:0.65rem;">Nasal (en, an)</span></td></tr>
+          <tr><td><strong>chantait</strong></td><td class="api-cell">/ʃɑ̃tɛ/</td><td>bernyanyi (lampau)</td><td><span class="pill rouge" style="font-size:0.65rem;">Consonantique (ch)</span> <span class="pill or" style="font-size:0.65rem;">Nasal (an)</span></td></tr>
+          <tr><td><strong>sous</strong></td><td class="api-cell">/su/</td><td>di bawah</td><td><span class="pill" style="font-size:0.65rem;">Vocalique (ou)</span></td></tr>
+          <tr><td><strong>pluie</strong></td><td class="api-cell">/plɥi/</td><td>hujan</td><td><span class="pill" style="font-size:0.65rem;">Vocalique (ui)</span></td></tr>
+          <tr><td><strong>en</strong></td><td class="api-cell">/ɑ̃/</td><td>di / dalam</td><td><span class="pill or" style="font-size:0.65rem;">Nasal (en)</span></td></tr>
+          <tr><td><strong>montagne</strong></td><td class="api-cell">/mɔ̃taɲ/</td><td>gunung</td><td><span class="pill or" style="font-size:0.65rem;">Nasal (on)</span> <span class="pill rouge" style="font-size:0.65rem;">Consonantique (gn)</span></td></tr>
+          <tr><td><strong>avec</strong></td><td class="api-cell">/avɛk/</td><td>bersama</td><td>—</td></tr>
+          <tr><td><strong>son</strong></td><td class="api-cell">/sɔ̃/</td><td>miliknya (tunggal)</td><td><span class="pill or" style="font-size:0.65rem;">Nasal (on)</span></td></tr>
+          <tr><td><strong>bon</strong></td><td class="api-cell">/bɔ̃/</td><td>baik / bagus</td><td><span class="pill or" style="font-size:0.65rem;">Nasal (on)</span></td></tr>
+          <tr><td><strong>ami</strong></td><td class="api-cell">/ami/</td><td>teman</td><td>—</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <footer>follow <span>@cestjojopieter</span> so you won't feel alone in learning french 🇫🇷</footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 3 — LES SUJETS (SUBJECTS)
+═══════════════════════════════════════════════ -->
+<div class="page">
+  <div class="content">
+
+    <span class="section-sub">Bagian 3</span>
+    <h2 class="section-title">Les Sujets<br/><small style="font-size:0.9rem;font-weight:400;color:#555">Kata Ganti Orang / Subjek</small></h2>
+
+    <p>Dalam bahasa Indonesia, kita sering <em>menghilangkan</em> subjek karena sudah jelas dari konteks. Bahasa Prancis <strong>tidak begitu</strong> — subjek <em>hampir selalu wajib</em> hadir di awal kalimat, karena konjugasi kata kerja bergantung pada subjek.</p>
+
+    <div class="info-box">
+      <strong>🇮🇩 vs 🇫🇷 Perbedaan Utama:</strong><br/>
+      • Bahasa Indonesia: "Makan nasi." (subjek bisa hilang) ✅<br/>
+      • Bahasa Prancis: <em>Je mange du riz.</em> — Subjek <strong>je</strong> WAJIB ada ✅<br/>
+      • Bahasa Prancis: <em>Mange du riz.</em> — SALAH ❌ (kecuali kalimat perintah)
+    </div>
+
+    <p>Selain itu, bahasa Prancis membedakan <strong>jenis kelamin</strong> pada kata ganti orang ketiga. Bahasa Indonesia tidak! "Dia" bisa untuk pria atau wanita, tapi bahasa Prancis punya <em>il</em> (dia laki-laki) dan <em>elle</em> (dia perempuan).</p>
+
+    <table class="subj-table">
+      <tr>
+        <th>Subjek Prancis</th>
+        <th>API</th>
+        <th>Artinya dalam Bahasa Indonesia</th>
+        <th>Catatan</th>
+      </tr>
+      <tr>
+        <td><span class="fr">je</span></td>
+        <td><span class="api-s">/ʒə/</span></td>
+        <td>saya / aku</td>
+        <td>Jadi <strong>j'</strong> sebelum vokal: <em>j'aime</em> (aku suka)</td>
+      </tr>
+      <tr>
+        <td><span class="fr">tu</span></td>
+        <td><span class="api-s">/ty/</span></td>
+        <td>kamu (informal, satu orang)</td>
+        <td>Dipakai untuk teman dekat, keluarga, anak-anak</td>
+      </tr>
+      <tr>
+        <td><span class="fr">il</span></td>
+        <td><span class="api-s">/il/</span></td>
+        <td>dia (laki-laki)</td>
+        <td>Juga dipakai untuk benda maskulin: <em>le soleil</em> → <em>il</em></td>
+      </tr>
+      <tr>
+        <td><span class="fr">elle</span></td>
+        <td><span class="api-s">/ɛl/</span></td>
+        <td>dia (perempuan)</td>
+        <td>Juga untuk benda feminin: <em>la lune</em> → <em>elle</em></td>
+      </tr>
+      <tr>
+        <td><span class="fr">on</span></td>
+        <td><span class="api-s">/ɔ̃/</span></td>
+        <td>kita / orang / seseorang</td>
+        <td>Informal pengganti <em>nous</em>; juga berarti "orang pada umumnya"</td>
+      </tr>
+      <tr>
+        <td><span class="fr">nous</span></td>
+        <td><span class="api-s">/nu/</span></td>
+        <td>kami / kita (formal)</td>
+        <td>Lebih formal; sehari-hari diganti <em>on</em></td>
+      </tr>
+      <tr>
+        <td><span class="fr">vous</span></td>
+        <td><span class="api-s">/vu/</span></td>
+        <td>kalian / Anda (formal)</td>
+        <td>Juga untuk satu orang yg dihormati (vouvoiement)</td>
+      </tr>
+      <tr>
+        <td><span class="fr">ils</span></td>
+        <td><span class="api-s">/il/</span></td>
+        <td>mereka (laki-laki / campuran)</td>
+        <td>Jika ada 1 laki-laki di grup, pakai <em>ils</em></td>
+      </tr>
+      <tr>
+        <td><span class="fr">elles</span></td>
+        <td><span class="api-s">/ɛl/</span></td>
+        <td>mereka (perempuan semua)</td>
+        <td>Hanya jika <em>semua</em> perempuan</td>
+      </tr>
+    </table>
+
+    <div class="warn-box">
+      <strong>⚠️ Hati-hati dengan "vous"!</strong><br/>
+      <em>Vous</em> bisa berarti <strong>"kalian"</strong> (jamak) ATAU <strong>"Anda"</strong> (formal/sopan untuk satu orang). Konteks menentukan maknanya. Saat berbicara dengan atasan, orang lebih tua, atau orang yang tidak dikenal, gunakan <em>vous</em>!
+    </div>
+
+    <div class="info-box">
+      <strong>💡 "On" — Rahasia Percakapan Prancis Sehari-hari:</strong><br/>
+      Orang Prancis <em>jarang</em> memakai <em>nous</em> dalam percakapan santai. Mereka pakai <em>on</em>!<br/>
+      <em>"On mange ensemble?"</em> /ɔ̃ mɑ̃ʒ ɑ̃sɑ̃bl/ = "Kita makan bareng, yuk?"<br/>
+      <em>On</em> memakai konjugasi yang sama seperti <em>il/elle</em>.
+    </div>
+
+  </div>
+  <footer>follow <span>@cestjojopieter</span> so you won't feel alone in learning french 🇫🇷</footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 4 — ÊTRE
+═══════════════════════════════════════════════ -->
+<div class="page">
+  <div class="content">
+
+    <span class="section-sub">Bagian 4 — Verbe Essentiel #1</span>
+    <h2 class="section-title">ÊTRE<br/><small style="font-size:0.9rem;font-weight:400;color:#555">/ɛtʁ/ — "To be" — Kata kerja "Adalah / Menjadi"</small></h2>
+
+    <p>Kalau kamu belajar bahasa Inggris, kamu pasti tahu <em>to be</em>: am, is, are. Nah, <strong>être</strong> adalah versi bahasa Prancisnya! Ini adalah kata kerja <em>paling penting</em> yang perlu kamu hafalkan karena dipakai di mana-mana.</p>
+
+    <p>Dalam bahasa Indonesia, kita sering tidak pakai kata "adalah" — langsung saja: "Aku guru." Tapi dalam bahasa Prancis, kamu WAJIB pakai être: <em>Je suis professeur.</em> /ʒə sɥi pʁɔfɛsœʁ/</p>
+
+    <p><strong>Kapan pakai ÊTRE?</strong></p>
+    <ul>
+      <li>Menyatakan <strong>identitas</strong>: nama, profesi, kebangsaan → <em>Je suis indonésien(ne).</em> (Aku orang Indonesia.)</li>
+      <li>Menyatakan <strong>sifat / keadaan permanen</strong>: <em>Elle est belle.</em> (Dia cantik.)</li>
+      <li>Menyatakan <strong>lokasi</strong> dengan kata sifat: <em>Nous sommes ici.</em> (Kita di sini.)</li>
+      <li>Membentuk <strong>temps composés</strong> (waktu lampau) untuk beberapa kata kerja gerak</li>
+    </ul>
+
+    <div class="conj-wrap">
+      <table class="conj-table">
+        <tr>
+          <th>Subjek (Indonesia)</th>
+          <th>Subjek (Prancis)</th>
+          <th>ÊTRE (présent)</th>
+          <th>API</th>
+          <th>Artinya</th>
+        </tr>
+        <tr>
+          <td>Saya / Aku</td>
+          <td>je</td>
+          <td class="fr-c">suis</td>
+          <td class="api-c">/sɥi/</td>
+          <td>saya adalah</td>
+        </tr>
+        <tr>
+          <td>Kamu</td>
+          <td>tu</td>
+          <td class="fr-c">es</td>
+          <td class="api-c">/ɛ/</td>
+          <td>kamu adalah</td>
+        </tr>
+        <tr>
+          <td>Dia (lk)</td>
+          <td>il</td>
+          <td class="fr-c">est</td>
+          <td class="api-c">/ɛ/</td>
+          <td>dia adalah</td>
+        </tr>
+        <tr>
+          <td>Dia (pr)</td>
+          <td>elle</td>
+          <td class="fr-c">est</td>
+          <td class="api-c">/ɛ/</td>
+          <td>dia adalah</td>
+        </tr>
+        <tr>
+          <td>Kita (informal)</td>
+          <td>on</td>
+          <td class="fr-c">est</td>
+          <td class="api-c">/ɛ/</td>
+          <td>kita adalah</td>
+        </tr>
+        <tr>
+          <td>Kami / Kita (formal)</td>
+          <td>nous</td>
+          <td class="fr-c">sommes</td>
+          <td class="api-c">/sɔm/</td>
+          <td>kami / kita adalah</td>
+        </tr>
+        <tr>
+          <td>Kalian / Anda</td>
+          <td>vous</td>
+          <td class="fr-c">êtes</td>
+          <td class="api-c">/ɛt/</td>
+          <td>kalian / Anda adalah</td>
+        </tr>
+        <tr>
+          <td>Mereka (lk/campuran)</td>
+          <td>ils</td>
+          <td class="fr-c">sont</td>
+          <td class="api-c">/sɔ̃/</td>
+          <td>mereka adalah</td>
+        </tr>
+        <tr>
+          <td>Mereka (pr semua)</td>
+          <td>elles</td>
+          <td class="fr-c">sont</td>
+          <td class="api-c">/sɔ̃/</td>
+          <td>mereka adalah</td>
+        </tr>
+      </table>
+    </div>
+
+    <p><strong>Contoh kalimat:</strong></p>
+    <ul>
+      <li><em>Je suis étudiant(e).</em> /ʒə sɥi etydjɑ̃(t)/ → Saya mahasiswa/mahasiswi.</li>
+      <li><em>Tu es fatigué(e).</em> /ty ɛ fatiɡe/ → Kamu lelah.</li>
+      <li><em>Il est médecin.</em> /il ɛ mɛdsɛ̃/ → Dia (lk) dokter.</li>
+      <li><em>Nous sommes amis.</em> /nu sɔm ami/ → Kita berteman.</li>
+      <li><em>Vous êtes prêts?</em> /vuz‿ɛt pʁɛ/ → Kalian sudah siap?</li>
+    </ul>
+
+  </div>
+  <footer>follow <span>@cestjojopieter</span> so you won't feel alone in learning french 🇫🇷</footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 5 — AVOIR
+═══════════════════════════════════════════════ -->
+<div class="page">
+  <div class="content">
+
+    <span class="section-sub">Bagian 5 — Verbe Essentiel #2</span>
+    <h2 class="section-title">AVOIR<br/><small style="font-size:0.9rem;font-weight:400;color:#555">/avwaʁ/ — "To have" — Kata kerja "Memiliki / Punya"</small></h2>
+
+    <p><strong>Avoir</strong> artinya "memiliki" atau "punya". Ini sama seperti <em>to have</em> dalam bahasa Inggris. Bersama <em>être</em>, <em>avoir</em> adalah fondasi bahasa Prancis!</p>
+
+    <p><strong>Kapan pakai AVOIR?</strong></p>
+    <ul>
+      <li>Menyatakan <strong>kepemilikan</strong>: <em>J'ai une voiture.</em> (Aku punya mobil.)</li>
+      <li>Menyatakan <strong>usia</strong>: <em>J'ai 20 ans.</em> /ʒe vɛ̃ ɑ̃/ (Aku berumur 20 tahun.) — bahasa Indonesia pakai "berumur", Prancis pakai "punya"!</li>
+      <li>Menyatakan <strong>rasa lapar, haus, takut, dll.</strong> (lihat tabel khusus di bawah)</li>
+      <li>Membentuk <strong>passé composé</strong> (kata kerja lampau) untuk sebagian besar kata kerja</li>
+    </ul>
+
+    <div class="conj-wrap">
+      <table class="conj-table">
+        <tr>
+          <th>Subjek (Indonesia)</th>
+          <th>Subjek (Prancis)</th>
+          <th>AVOIR (présent)</th>
+          <th>API</th>
+          <th>Artinya</th>
+        </tr>
+        <tr><td>Saya / Aku</td><td>je</td><td class="fr-c">ai</td><td class="api-c">/e/</td><td>saya punya</td></tr>
+        <tr><td>Kamu</td><td>tu</td><td class="fr-c">as</td><td class="api-c">/a/</td><td>kamu punya</td></tr>
+        <tr><td>Dia (lk)</td><td>il</td><td class="fr-c">a</td><td class="api-c">/a/</td><td>dia punya</td></tr>
+        <tr><td>Dia (pr)</td><td>elle</td><td class="fr-c">a</td><td class="api-c">/a/</td><td>dia punya</td></tr>
+        <tr><td>Kita (informal)</td><td>on</td><td class="fr-c">a</td><td class="api-c">/a/</td><td>kita punya</td></tr>
+        <tr><td>Kami / Kita (formal)</td><td>nous</td><td class="fr-c">avons</td><td class="api-c">/avɔ̃/</td><td>kami / kita punya</td></tr>
+        <tr><td>Kalian / Anda</td><td>vous</td><td class="fr-c">avez</td><td class="api-c">/ave/</td><td>kalian / Anda punya</td></tr>
+        <tr><td>Mereka (lk/campuran)</td><td>ils</td><td class="fr-c">ont</td><td class="api-c">/ɔ̃/</td><td>mereka punya</td></tr>
+        <tr><td>Mereka (pr semua)</td><td>elles</td><td class="fr-c">ont</td><td class="api-c">/ɔ̃/</td><td>mereka punya</td></tr>
+      </table>
+    </div>
+
+    <hr class="page-divider"/>
+
+    <!-- ÊTRE vs AVOIR: SENSATIONS -->
+    <h3 style="font-family:'Playfair Display',serif;color:var(--rouge);margin-bottom:0.7rem;">⚡ Jebakan Klasik: <em>Je suis chaud</em> vs <em>J'ai chaud</em></h3>
+
+    <p>Ini salah satu perbedaan yang PALING sering membingungkan orang Indonesia (dan orang Inggris juga)! Dalam bahasa Inggris kita bilang "I am hot / I am hungry" — pakai <em>to be</em>. Tapi bahasa Prancis pakai <em>avoir</em> untuk sensasi tubuh!</p>
+
+    <table class="subj-table">
+      <tr><th>Ekspresi</th><th>API</th><th>Arti dalam bahasa Indonesia</th></tr>
+      <tr><td><span class="fr">J'ai chaud</span></td><td><span class="api-s">/ʒe ʃo/</span></td><td>Aku kepanasan / merasa panas (tubuhku panas)</td></tr>
+      <tr><td><span class="fr">J'ai froid</span></td><td><span class="api-s">/ʒe fʁwa/</span></td><td>Aku kedinginan</td></tr>
+      <tr><td><span class="fr">J'ai faim</span></td><td><span class="api-s">/ʒe fɛ̃/</span></td><td>Aku lapar</td></tr>
+      <tr><td><span class="fr">J'ai soif</span></td><td><span class="api-s">/ʒe swaf/</span></td><td>Aku haus</td></tr>
+      <tr><td><span class="fr">J'ai peur</span></td><td><span class="api-s">/ʒe pœʁ/</span></td><td>Aku takut</td></tr>
+      <tr><td><span class="fr">J'ai sommeil</span></td><td><span class="api-s">/ʒe sɔmɛj/</span></td><td>Aku ngantuk</td></tr>
+      <tr><td><span class="fr">J'ai mal</span></td><td><span class="api-s">/ʒe mal/</span></td><td>Aku sakit / kesakitan</td></tr>
+      <tr><td><span class="fr">J'ai ... ans</span></td><td><span class="api-s">/ʒe ... ɑ̃/</span></td><td>Aku berumur ... tahun</td></tr>
+    </table>
+
+    <div class="warn-box">
+      <strong>⚠️ Je suis chaud ≠ Aku kepanasan!</strong><br/>
+      <em>Je suis chaud(e)</em> /ʒə sɥi ʃo(d)/ artinya "Aku (orang yang) panas/seksi/bersemangat" — kata sifat yang mendeskripsikan <em>kepribadianmu</em>, bukan kondisi tubuh sesaat.<br/>
+      <em>J'ai chaud</em> = "Aku sedang kepanasan" (saat ini, kondisi tubuh) ✅<br/>
+      Jadi hati-hati ya, jangan sampai salah! 😄
+    </div>
+
+  </div>
+  <footer>follow <span>@cestjojopieter</span> so you won't feel alone in learning french 🇫🇷</footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 6 — LES ARTICLES
+═══════════════════════════════════════════════ -->
+<div class="page">
+  <div class="content">
+
+    <span class="section-sub">Bagian 6</span>
+    <h2 class="section-title">Les Articles<br/><small style="font-size:0.9rem;font-weight:400;color:#555">Artikel Bahasa Prancis — Définis &amp; Indéfinis</small></h2>
+
+    <p>Dalam bahasa Indonesia, kita <strong>tidak mengenal artikel</strong>. Kita cukup bilang "kucing", "buku", "teman". Tapi dalam bahasa Prancis, setiap kata benda <em>harus</em> didampingi artikel yang menunjukkan <strong>jenis kelamin</strong> (maskulin/feminin) dan <strong>jumlah</strong> (tunggal/jamak) benda tersebut.</p>
+
+    <h3 style="font-family:'Playfair Display',serif;color:var(--bleu);margin:1rem 0 0.5rem;">📌 Articles Indéfinis (Artikel Tak Tentu)</h3>
+    <p>Digunakan ketika berbicara tentang sesuatu yang <strong>belum spesifik</strong>, pertama kali disebutkan, atau salah satu dari banyak. Seperti "a / an / some" dalam bahasa Inggris.</p>
+
+    <table class="art-table">
+      <tr><th>Artikel</th><th>API</th><th>Dipakai untuk</th><th>Contoh</th><th>Arti</th></tr>
+      <tr><td><span class="fr-a">un</span></td><td>/œ̃/</td><td>Benda maskulin tunggal</td><td><em>un chat</em></td><td>seekor kucing (jantan/netral)</td></tr>
+      <tr><td><span class="fr-a">une</span></td><td>/yn/</td><td>Benda feminin tunggal</td><td><em>une maison</em></td><td>sebuah rumah</td></tr>
+      <tr><td><span class="fr-a">des</span></td><td>/de/</td><td>Jamak (semua jenis kelamin)</td><td><em>des amis</em></td><td>beberapa teman</td></tr>
+    </table>
+
+    <h3 style="font-family:'Playfair Display',serif;color:var(--bleu);margin:1rem 0 0.5rem;">📌 Articles Définis (Artikel Tentu)</h3>
+    <p>Digunakan ketika berbicara tentang sesuatu yang <strong>sudah diketahui</strong>, spesifik, atau benda secara umum. Seperti "the" dalam bahasa Inggris.</p>
+
+    <table class="art-table">
+      <tr><th>Artikel</th><th>API</th><th>Dipakai untuk</th><th>Contoh</th><th>Arti</th></tr>
+      <tr><td><span class="fr-a">le</span></td><td>/lə/</td><td>Benda maskulin tunggal</td><td><em>le soleil</em></td><td>matahari (itu)</td></tr>
+      <tr><td><span class="fr-a">la</span></td><td>/la/</td><td>Benda feminin tunggal</td><td><em>la lune</em></td><td>bulan (itu)</td></tr>
+      <tr><td><span class="fr-a">l'</span></td><td>/l/</td><td>Sebelum vokal / h (semua gender)</td><td><em>l'ami, l'heure</em></td><td>teman itu, jam itu</td></tr>
+      <tr><td><span class="fr-a">les</span></td><td>/le/</td><td>Jamak (semua jenis kelamin)</td><td><em>les enfants</em></td><td>anak-anak itu</td></tr>
+    </table>
+
+    <div class="info-box">
+      <strong>🇬🇧 Kesimpulan dalam bahasa Inggris (buat lebih mudah dipahami):</strong><br/>
+      Think of it this way: in English, you say "a cat" for something new/unknown and "the cat" for something already mentioned or specific. French works the same way — but you must also match the article to the noun's gender (masculine/feminine). <em>Un/le</em> for masculine, <em>une/la</em> for feminine, and <em>des/les</em> for plural. If the noun starts with a vowel or silent H, <em>le/la</em> both become <em>l'</em>.
+    </div>
+
+    <div class="warn-box">
+      <strong>⚠️ Bahaya Negasi!</strong><br/>
+      Dalam kalimat negatif, <em>un, une, des</em> berubah menjadi <strong>de / d'</strong>!<br/>
+      <em>J'ai un chien.</em> /ʒe œ̃ ʃjɛ̃/ → Aku punya anjing.<br/>
+      <em>Je n'ai <strong>pas de</strong> chien.</em> /ʒə ne pa də ʃjɛ̃/ → Aku tidak punya anjing.
+    </div>
+
+    <hr class="page-divider"/>
+
+    <!-- GENDER PATTERNS -->
+    <span class="section-sub">Bonus — Cara Tebak Jenis Kelamin Kata Benda</span>
+    <h2 class="section-title">20 Pola Tebak Gender<br/><small style="font-size:0.9rem;font-weight:400;color:#555">Maskulin vs Feminin — Tips &amp; Trik!</small></h2>
+
+    <p>Tidak ada aturan 100% pasti untuk menentukan gender kata benda Prancis — tapi ada <strong>pola akhiran kata</strong> yang bisa jadi panduan. Hafalkan ini dan kamu bisa tebak dengan benar lebih dari 70% kasus!</p>
+
+    <div class="gender-grid">
+
+      <!-- 1 -->
+      <div class="gender-card masc">
+        <div class="gc-title">🔵 Maskulin — Akhiran <strong>-age</strong></div>
+        <div class="gc-rule">Kata yang berakhir -age biasanya maskulin</div>
+        <div class="gc-ex"><span class="fr-w">le fromage</span> <span class="api-w">/fʁɔmaʒ/</span> <span class="id-w">= keju</span></div>
+        <div class="gc-ex"><span class="fr-w">le voyage</span> <span class="api-w">/vwajaʒ/</span> <span class="id-w">= perjalanan</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--rouge);font-weight:700;">⚠️ Pengecualian feminin:</span><br/>
+          <span class="fr-w">la plage</span> <span class="api-w">/plaʒ/</span> <span class="id-w">= pantai</span><br/>
+          <span class="fr-w">la cage</span> <span class="api-w">/kaʒ/</span> <span class="id-w">= kandang</span><br/>
+          <span class="fr-w">la page</span> <span class="api-w">/paʒ/</span> <span class="id-w">= halaman</span><br/>
+          <span class="fr-w">la nage</span> <span class="api-w">/naʒ/</span> <span class="id-w">= renangan</span>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="gender-card fem">
+        <div class="gc-title">🔴 Feminin — Akhiran <strong>-tion / -sion</strong></div>
+        <div class="gc-rule">Kata -tion/-sion hampir selalu feminin</div>
+        <div class="gc-ex"><span class="fr-w">la nation</span> <span class="api-w">/nasjɔ̃/</span> <span class="id-w">= bangsa</span></div>
+        <div class="gc-ex"><span class="fr-w">la passion</span> <span class="api-w">/pasjɔ̃/</span> <span class="id-w">= gairah</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--bleu);font-weight:700;">✅ Tidak ada pengecualian signifikan</span><br/>
+          <span style="font-size:0.72rem;color:#666;">Pola ini sangat konsisten — aman untuk dihafal!</span>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="gender-card masc">
+        <div class="gc-title">🔵 Maskulin — Akhiran <strong>-ment</strong></div>
+        <div class="gc-rule">Kata benda dari kata kerja berakhir -ment → maskulin</div>
+        <div class="gc-ex"><span class="fr-w">le gouvernement</span> <span class="api-w">/ɡuvɛʁnəmɑ̃/</span> <span class="id-w">= pemerintahan</span></div>
+        <div class="gc-ex"><span class="fr-w">le mouvement</span> <span class="api-w">/muvmɑ̃/</span> <span class="id-w">= gerakan</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--rouge);font-weight:700;">⚠️ Pengecualian feminin:</span><br/>
+          <span class="fr-w">une jument</span> <span class="api-w">/ʒymɑ̃/</span> <span class="id-w">= kuda betina</span>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="gender-card fem">
+        <div class="gc-title">🔴 Feminin — Akhiran <strong>-ure</strong></div>
+        <div class="gc-rule">Akhiran -ure biasanya feminin</div>
+        <div class="gc-ex"><span class="fr-w">la nature</span> <span class="api-w">/natyʁ/</span> <span class="id-w">= alam</span></div>
+        <div class="gc-ex"><span class="fr-w">la culture</span> <span class="api-w">/kyltYʁ/</span> <span class="id-w">= budaya</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--rouge);font-weight:700;">⚠️ Pengecualian maskulin:</span><br/>
+          <span class="fr-w">le murmure</span> <span class="api-w">/myʁmyʁ/</span> <span class="id-w">= bisikan / desiran</span><br/>
+          <span class="fr-w">le mercure</span> <span class="api-w">/mɛʁkyʁ/</span> <span class="id-w">= merkuri</span>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="gender-card masc">
+        <div class="gc-title">🔵 Maskulin — Akhiran <strong>-eur</strong> (orang/mesin)</div>
+        <div class="gc-rule">Profesi & mesin berakhir -eur → maskulin</div>
+        <div class="gc-ex"><span class="fr-w">le chanteur</span> <span class="api-w">/ʃɑ̃tœʁ/</span> <span class="id-w">= penyanyi (lk)</span></div>
+        <div class="gc-ex"><span class="fr-w">le moteur</span> <span class="api-w">/mɔtœʁ/</span> <span class="id-w">= mesin</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--rouge);font-weight:700;">⚠️ Pengecualian feminin (kata abstrak -eur):</span><br/>
+          <span class="fr-w">la chaleur</span> <span class="api-w">/ʃalœʁ/</span> <span class="id-w">= panas / kehangatan</span><br/>
+          <span class="fr-w">la peur</span> <span class="api-w">/pœʁ/</span> <span class="id-w">= ketakutan</span><br/>
+          <span class="fr-w">la couleur</span> <span class="api-w">/kulœʁ/</span> <span class="id-w">= warna</span><br/>
+          <span style="font-size:0.72rem;color:#555;font-style:italic;">→ -eur abstrak/konsep = sering feminin!</span>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="gender-card fem">
+        <div class="gc-title">🔴 Feminin — Akhiran <strong>-euse / -trice</strong></div>
+        <div class="gc-rule">Bentuk feminin dari -eur → -euse atau -trice</div>
+        <div class="gc-ex"><span class="fr-w">la chanteuse</span> <span class="api-w">/ʃɑ̃tøz/</span> <span class="id-w">= penyanyi (pr)</span></div>
+        <div class="gc-ex"><span class="fr-w">l'actrice</span> <span class="api-w">/aktʁis/</span> <span class="id-w">= aktris</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--bleu);font-weight:700;">✅ Tidak ada pengecualian</span><br/>
+          <span style="font-size:0.72rem;color:#666;">-euse dan -trice selalu feminin tanpa kecuali.</span>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="gender-card masc">
+        <div class="gc-title">🔵 Maskulin — Akhiran <strong>-eau</strong></div>
+        <div class="gc-rule">Kata berakhir -eau hampir selalu maskulin</div>
+        <div class="gc-ex"><span class="fr-w">le gâteau</span> <span class="api-w">/ɡɑto/</span> <span class="id-w">= kue</span></div>
+        <div class="gc-ex"><span class="fr-w">le chapeau</span> <span class="api-w">/ʃapo/</span> <span class="id-w">= topi</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--rouge);font-weight:700;">⚠️ Pengecualian feminin:</span><br/>
+          <span class="fr-w">la peau</span> <span class="api-w">/po/</span> <span class="id-w">= kulit</span><br/>
+          <span class="fr-w">l'eau</span> <span class="api-w">/o/</span> <span class="id-w">= air (feminin!)</span>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="gender-card fem">
+        <div class="gc-title">🔴 Feminin — Akhiran <strong>-esse</strong></div>
+        <div class="gc-rule">Akhiran -esse menandakan feminin & abstrak</div>
+        <div class="gc-ex"><span class="fr-w">la tendresse</span> <span class="api-w">/tɑ̃dʁɛs/</span> <span class="id-w">= kelembutan</span></div>
+        <div class="gc-ex"><span class="fr-w">la tristesse</span> <span class="api-w">/tʁistɛs/</span> <span class="id-w">= kesedihan</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--bleu);font-weight:700;">✅ Tidak ada pengecualian</span><br/>
+          <span style="font-size:0.72rem;color:#666;">-esse selalu feminin — pola paling aman!</span>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="gender-card masc">
+        <div class="gc-title">🔵 Maskulin — Akhiran <strong>-isme</strong></div>
+        <div class="gc-rule">Ideologi, gerakan, doktrin → maskulin</div>
+        <div class="gc-ex"><span class="fr-w">le tourisme</span> <span class="api-w">/tuʁism/</span> <span class="id-w">= pariwisata</span></div>
+        <div class="gc-ex"><span class="fr-w">le réalisme</span> <span class="api-w">/ʁealism/</span> <span class="id-w">= realisme</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--bleu);font-weight:700;">✅ Tidak ada pengecualian</span><br/>
+          <span style="font-size:0.72rem;color:#666;">Semua kata berakhir -isme adalah maskulin.</span>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="gender-card fem">
+        <div class="gc-title">🔴 Feminin — Akhiran <strong>-té / -tié</strong></div>
+        <div class="gc-rule">Kualitas abstrak berakhir -té → feminin</div>
+        <div class="gc-ex"><span class="fr-w">la liberté</span> <span class="api-w">/libɛʁte/</span> <span class="id-w">= kebebasan</span></div>
+        <div class="gc-ex"><span class="fr-w">la beauté</span> <span class="api-w">/bote/</span> <span class="id-w">= keindahan</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--rouge);font-weight:700;">⚠️ Pengecualian maskulin:</span><br/>
+          <span class="fr-w">le comté</span> <span class="api-w">/kɔ̃te/</span> <span class="id-w">= kabupaten / county</span><br/>
+          <span class="fr-w">le traité</span> <span class="api-w">/tʁɛte/</span> <span class="id-w">= perjanjian / traktat</span><br/>
+          <span style="font-size:0.72rem;color:#555;font-style:italic;">→ Kata ini bukan konsep abstrak, jadi maskulin!</span>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="gender-card masc">
+        <div class="gc-title">🔵 Maskulin — Akhiran <strong>-oir</strong> (benda/alat)</div>
+        <div class="gc-rule">Benda/alat berakhir -oir → maskulin</div>
+        <div class="gc-ex"><span class="fr-w">le miroir</span> <span class="api-w">/miʁwaʁ/</span> <span class="id-w">= cermin</span></div>
+        <div class="gc-ex"><span class="fr-w">le couloir</span> <span class="api-w">/kulwaʁ/</span> <span class="id-w">= koridor</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--bleu);font-weight:700;">✅ Tidak ada pengecualian untuk -oir</span><br/>
+          <span style="font-size:0.72rem;color:#666;">Catatan: -oire (dengan e) bisa maskulin atau feminin — lihat pola #20!</span>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="gender-card fem">
+        <div class="gc-title">🔴 Feminin — Akhiran <strong>-ance / -ence</strong></div>
+        <div class="gc-rule">Kata abstrak dinominalisasi → feminin</div>
+        <div class="gc-ex"><span class="fr-w">la confiance</span> <span class="api-w">/kɔ̃fjɑ̃s/</span> <span class="id-w">= kepercayaan</span></div>
+        <div class="gc-ex"><span class="fr-w">la patience</span> <span class="api-w">/pasjɑ̃s/</span> <span class="id-w">= kesabaran</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--rouge);font-weight:700;">⚠️ Pengecualian maskulin:</span><br/>
+          <span class="fr-w">le silence</span> <span class="api-w">/silɑ̃s/</span> <span class="id-w">= keheningan</span><br/>
+          <span class="fr-w">le service</span> <span class="api-w">/sɛʁvis/</span> <span class="id-w">= layanan</span><br/>
+          <span style="font-size:0.72rem;color:#555;font-style:italic;">→ Berakhir -ice/-ence tapi maskulin!</span>
+        </div>
+      </div>
+
+      <!-- 13 -->
+      <div class="gender-card masc">
+        <div class="gc-title">🔵 Maskulin — Nama <strong>bahasa</strong></div>
+        <div class="gc-rule">Semua bahasa adalah maskulin tanpa kecuali</div>
+        <div class="gc-ex"><span class="fr-w">le français</span> <span class="api-w">/fʁɑ̃sɛ/</span> <span class="id-w">= bahasa Prancis</span></div>
+        <div class="gc-ex"><span class="fr-w">l'indonésien</span> <span class="api-w">/ɛ̃dɔnezjɛ̃/</span> <span class="id-w">= bahasa Indonesia</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--bleu);font-weight:700;">✅ Tidak ada pengecualian</span><br/>
+          <span style="font-size:0.72rem;color:#666;">le japonais, le mandarin, l'arabe — semua maskulin!</span>
+        </div>
+      </div>
+
+      <!-- 14 -->
+      <div class="gender-card fem">
+        <div class="gc-title">🔴 Feminin — Nama <strong>negara</strong> berakhir -e</div>
+        <div class="gc-rule">Kebanyakan negara berakhir -e → feminin</div>
+        <div class="gc-ex"><span class="fr-w">la France</span> <span class="api-w">/fʁɑ̃s/</span> <span class="id-w">= Prancis</span></div>
+        <div class="gc-ex"><span class="fr-w">l'Indonésie</span> <span class="api-w">/ɛ̃dɔnezi/</span> <span class="id-w">= Indonesia</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--rouge);font-weight:700;">⚠️ Pengecualian maskulin (berakhir -e tapi maskulin!):</span><br/>
+          <span class="fr-w">le Mexique</span> <span class="api-w">/mɛksik/</span> <span class="id-w">= Meksiko</span><br/>
+          <span class="fr-w">le Cambodge</span> <span class="api-w">/kɑ̃bɔdʒ/</span> <span class="id-w">= Kamboja</span><br/>
+          <span class="fr-w">le Zimbabwe</span> <span class="api-w">/zimbɑbwe/</span> <span class="id-w">= Zimbabwe</span>
+        </div>
+      </div>
+
+      <!-- 15 -->
+      <div class="gender-card masc">
+        <div class="gc-title">🔵 Maskulin — Nama <strong>negara</strong> TIDAK berakhir -e</div>
+        <div class="gc-rule">Negara tanpa -e di akhir → maskulin</div>
+        <div class="gc-ex"><span class="fr-w">le Japon</span> <span class="api-w">/ʒapɔ̃/</span> <span class="id-w">= Jepang</span></div>
+        <div class="gc-ex"><span class="fr-w">le Maroc</span> <span class="api-w">/maʁɔk/</span> <span class="id-w">= Maroko</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--rouge);font-weight:700;">⚠️ Pengecualian feminin:</span><br/>
+          <span class="fr-w">Israël</span> <span class="api-w">/izʁaɛl/</span> <span class="id-w">= Israel (tidak pakai artikel)</span><br/>
+          <span style="font-size:0.72rem;color:#555;font-style:italic;">→ Beberapa negara pulau kecil juga tidak pakai artikel sama sekali, seperti Cuba, Haïti.</span>
+        </div>
+      </div>
+
+      <!-- 16 -->
+      <div class="gender-card fem">
+        <div class="gc-title">🔴 Feminin — Akhiran <strong>-ie</strong></div>
+        <div class="gc-rule">Bidang studi & konsep berakhir -ie → feminin</div>
+        <div class="gc-ex"><span class="fr-w">la biologie</span> <span class="api-w">/bjɔlɔʒi/</span> <span class="id-w">= biologi</span></div>
+        <div class="gc-ex"><span class="fr-w">la philosophie</span> <span class="api-w">/filɔzɔfi/</span> <span class="id-w">= filsafat</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--rouge);font-weight:700;">⚠️ Pengecualian maskulin:</span><br/>
+          <span class="fr-w">le génie</span> <span class="api-w">/ʒeni/</span> <span class="id-w">= kejeniusan / roh</span><br/>
+          <span class="fr-w">le parapluie</span> <span class="api-w">/paʁaplɥi/</span> <span class="id-w">= payung</span>
+        </div>
+      </div>
+
+      <!-- 17 -->
+      <div class="gender-card masc">
+        <div class="gc-title">🔵 Maskulin — Akhiran <strong>-al / -el</strong></div>
+        <div class="gc-rule">Kata benda berakhir -al/-el → biasanya maskulin</div>
+        <div class="gc-ex"><span class="fr-w">le journal</span> <span class="api-w">/ʒuʁnal/</span> <span class="id-w">= surat kabar</span></div>
+        <div class="gc-ex"><span class="fr-w">le cheval</span> <span class="api-w">/ʃəval/</span> <span class="id-w">= kuda</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--rouge);font-weight:700;">⚠️ Pengecualian feminin:</span><br/>
+          <span class="fr-w">la capitale</span> <span class="api-w">/kapital/</span> <span class="id-w">= ibu kota</span><br/>
+          <span class="fr-w">la morale</span> <span class="api-w">/mɔʁal/</span> <span class="id-w">= moral / moralitas</span><br/>
+          <span style="font-size:0.72rem;color:#555;font-style:italic;">→ Versi feminin kata sifat -al bisa jadi kata benda feminin!</span>
+        </div>
+      </div>
+
+      <!-- 18 -->
+      <div class="gender-card fem">
+        <div class="gc-title">🔴 Feminin — Akhiran <strong>-ette</strong></div>
+        <div class="gc-rule">Diminutif feminin berakhir -ette</div>
+        <div class="gc-ex"><span class="fr-w">la baguette</span> <span class="api-w">/baɡɛt/</span> <span class="id-w">= roti baguette</span></div>
+        <div class="gc-ex"><span class="fr-w">la chaussette</span> <span class="api-w">/ʃosɛt/</span> <span class="id-w">= kaus kaki</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--bleu);font-weight:700;">✅ Tidak ada pengecualian</span><br/>
+          <span style="font-size:0.72rem;color:#666;">-ette selalu feminin — hafalkan dengan tenang! 😌</span>
+        </div>
+      </div>
+
+      <!-- 19 -->
+      <div class="gender-card masc">
+        <div class="gc-title">🔵 Maskulin — Akhiran <strong>-et</strong></div>
+        <div class="gc-rule">Diminutif maskulin berakhir -et</div>
+        <div class="gc-ex"><span class="fr-w">le billet</span> <span class="api-w">/bijɛ/</span> <span class="id-w">= tiket / uang kertas</span></div>
+        <div class="gc-ex"><span class="fr-w">le buffet</span> <span class="api-w">/byfɛ/</span> <span class="id-w">= lemari / prasmanan</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--rouge);font-weight:700;">⚠️ Pengecualian feminin:</span><br/>
+          <span class="fr-w">la forêt</span> <span class="api-w">/fɔʁɛ/</span> <span class="id-w">= hutan</span><br/>
+          <span class="fr-w">la plupart</span> <span class="api-w">/plypaʁ/</span> <span class="id-w">= sebagian besar</span>
+        </div>
+      </div>
+
+      <!-- 20 -->
+      <div class="gender-card fem">
+        <div class="gc-title">🔴 Feminin — Akhiran <strong>-oire</strong> (abstrak)</div>
+        <div class="gc-rule">Konsep abstrak berakhir -oire → feminin</div>
+        <div class="gc-ex"><span class="fr-w">la victoire</span> <span class="api-w">/viktwaʁ/</span> <span class="id-w">= kemenangan</span></div>
+        <div class="gc-ex"><span class="fr-w">la mémoire</span> <span class="api-w">/memwaʁ/</span> <span class="id-w">= memori / ingatan</span></div>
+        <div class="gc-ex" style="margin-top:0.35rem;padding-top:0.35rem;border-top:1px dashed #c8bfb0;">
+          <span style="font-size:0.72rem;color:var(--rouge);font-weight:700;">⚠️ Pengecualian maskulin (-oire bisa dua gender!):</span><br/>
+          <span class="fr-w">le laboratoire</span> <span class="api-w">/labɔʁatwaʁ/</span> <span class="id-w">= laboratorium</span><br/>
+          <span class="fr-w">le répertoire</span> <span class="api-w">/ʁepɛʁtwaʁ/</span> <span class="id-w">= direktori / daftar</span><br/>
+          <span style="font-size:0.72rem;color:#555;font-style:italic;">→ -oire memang tricky! Selalu cek kamus untuk kata baru.</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-box">
+      <strong>💡 Tips Terbaik:</strong> Selalu hafalkan kata benda beserta artikelnya! Jangan hafal "chat" (kucing) tapi hafal "<strong>le</strong> chat". Dengan begitu, gender sudah otomatis terekam di otak kamu!
+    </div>
+
+  </div>
+  <footer>follow <span>@cestjojopieter</span> so you won't feel alone in learning french 🇫🇷</footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 7 — EXERCISE + NOTE
+═══════════════════════════════════════════════ -->
+<div class="page">
+  <div class="content">
+
+    <span class="section-sub">Bagian 7 — Latihan</span>
+    <h2 class="section-title">Exercices<br/><small style="font-size:0.9rem;font-weight:400;color:#555">Latihan Être &amp; Avoir — Membuat Kalimat Sederhana</small></h2>
+
+    <p>Saatnya praktik! Gunakan <strong>être</strong> dan <strong>avoir</strong> bersama kata sifat dan kata benda di bawah ini untuk membuat kalimat. Perhatikan gender artikel dan kata sifatnya!</p>
+
+    <div class="info-box" style="margin-bottom:1rem;">
+      <strong>📚 Kosakata yang akan dipakai:</strong><br/>
+      <strong>Kata sifat:</strong> grand(e) /ɡʁɑ̃(d)/ = besar/tinggi | petit(e) /pəti(t)/ = kecil | intelligent(e) /ɛ̃tɛliʒɑ̃(t)/ = cerdas | gentil(le) /ʒɑ̃ti(j)/ = baik hati | beau/belle /bo/bɛl/ = cantik/tampan | fatigué(e) /fatiɡe/ = lelah | content(e) /kɔ̃tɑ̃(t)/ = senang<br/>
+      <strong>Kata benda:</strong> un livre /livʁ/ = buku | une voiture /vwatyʁ/ = mobil | un appartement /apaʁtəmɑ̃/ = apartemen | un chien /ʃjɛ̃/ = anjing | une idée /ide/ = ide | des amis /ami/ = teman-teman
+    </div>
+
+    <div class="exo-box">
+      <h4>✏️ Soal A — Pilih être atau avoir, lalu lengkapi!</h4>
+
+      <div class="exo-item">
+        <div class="q">1. Maria ___ étudiante. (Maria adalah mahasiswi.)</div>
+        <div class="hint">💭 Petunjuk: identitas/profesi → être atau avoir?</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">2. J'___ un livre intéressant. (Aku punya buku yang menarik.)</div>
+        <div class="hint">💭 Petunjuk: kepemilikan → être atau avoir?</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">3. Tu ___ fatigué(e) aujourd'hui. (Kamu lelah hari ini.)</div>
+        <div class="hint">💭 Petunjuk: keadaan/sifat → être atau avoir?</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">4. Il ___ une belle voiture. (Dia punya mobil yang bagus.)</div>
+        <div class="hint">💭 Petunjuk: kepemilikan → être atau avoir?</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">5. Nous ___ contents d'être ici! (Kami senang berada di sini!)</div>
+        <div class="hint">💭 Petunjuk: perasaan/keadaan → être atau avoir?</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">6. Vous ___ des amis intelligents. (Kalian punya teman-teman yang cerdas.)</div>
+        <div class="hint">💭 Petunjuk: kepemilikan → être atau avoir?</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">7. Elles ___ belles et intelligentes. (Mereka cantik dan cerdas.)</div>
+        <div class="hint">💭 Petunjuk: sifat → être atau avoir?</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">8. J'___ faim et j'___ soif! (Aku lapar dan aku haus!)</div>
+        <div class="hint">💭 Petunjuk: sensasi tubuh → être atau avoir?</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">9. Mon chien ___ petit mais gentil. (Anjingku kecil tapi baik hati.)</div>
+        <div class="hint">💭 Petunjuk: sifat → être atau avoir?</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">10. Ils ___ une bonne idée. (Mereka punya ide yang bagus.)</div>
+        <div class="hint">💭 Petunjuk: kepemilikan → être atau avoir?</div>
+      </div>
+    </div>
+
+    <div class="exo-box" style="margin-top:1.2rem;">
+      <h4>✏️ Soal B — Pilih artikel yang tepat: un / une / des / le / la / l' / les</h4>
+      <p style="font-size:0.8rem;color:#555;margin-bottom:0.8rem;">Lengkapi dengan artikel yang benar. Perhatikan gender (maskulin/feminin) dan apakah benda itu sudah dikenal (défini) atau belum (indéfini)!</p>
+
+      <div class="exo-item">
+        <div class="q">1. J'ai ___ chat. Il s'appelle Mochi. (Aku punya seekor kucing. Namanya Mochi.) → <em>chat</em> = maskulin</div>
+        <div class="hint">💭 Petunjuk: pertama kali disebut, maskulin → indéfini maskulin</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">2. ___ soleil est beau aujourd'hui. (Matahari hari ini indah.) → <em>soleil</em> = maskulin</div>
+        <div class="hint">💭 Petunjuk: matahari itu unik/sudah dikenal → défini maskulin</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">3. Elle lit ___ livre. (Dia sedang membaca sebuah buku.) → <em>livre</em> = maskulin</div>
+        <div class="hint">💭 Petunjuk: buku yang belum spesifik → indéfini maskulin</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">4. ___ enfants jouent dans le parc. (Anak-anak bermain di taman.) → <em>enfants</em> = jamak</div>
+        <div class="hint">💭 Petunjuk: anak-anak yang sudah dikenal, jamak → défini jamak</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">5. Tu veux ___ orange? (Kamu mau sebuah jeruk?) → <em>orange</em> = feminin</div>
+        <div class="hint">💭 Petunjuk: jeruk yang belum spesifik, feminin → indéfini feminin</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">6. J'aime ___ musique française. (Aku suka musik Prancis.) → <em>musique</em> = feminin</div>
+        <div class="hint">💭 Petunjuk: musik secara umum/kategori → défini feminin</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">7. Il y a ___ étudiants dans la classe. (Ada beberapa mahasiswa di kelas.) → <em>étudiants</em> = jamak</div>
+        <div class="hint">💭 Petunjuk: beberapa, belum spesifik, jamak → indéfini jamak</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">8. ___ ami de Marie est très sympa. (Teman Marie sangat menyenangkan.) → <em>ami</em> = maskulin, mulai huruf vokal</div>
+        <div class="hint">💭 Petunjuk: teman yang spesifik, maskulin, diawali vokal → défini + elision!</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">9. Nous avons ___ idées pour le projet. (Kami punya beberapa ide untuk proyek.) → <em>idées</em> = jamak</div>
+        <div class="hint">💭 Petunjuk: beberapa ide, belum spesifik, jamak → indéfini jamak</div>
+      </div>
+
+      <div class="exo-item">
+        <div class="q">10. ___ tour Eiffel est à Paris. (Menara Eiffel ada di Paris.) → <em>tour</em> = feminin</div>
+        <div class="hint">💭 Petunjuk: sudah sangat dikenal, feminin → défini feminin</div>
+      </div>
+    </div>
+
+    <hr class="page-divider"/>
+
+    <!-- NOTE CIRCLE -->
+    <div class="note-circle-wrap">
+      <div class="note-circle">
+        <p>Jangan malu/sungkan untuk kirim voicenote buat yang masih belum/lagi belajar baca bahasa Prancis tapi gak punya temen.</p>
+        <span class="big">I'm here<br/>FOR YOU 💙</span>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:0.82rem;color:#888;margin-top:0.5rem;">
+      📲 DM atau voicenote ke <strong>@cestjojopieter</strong> — kamu tidak sendirian dalam belajar bahasa Prancis!<br/>
+      <em>Tu n'es pas seul(e).</em> /ty nɛ pa sœl/ — Kamu tidak sendirian.
+    </p>
+
+  </div>
+  <footer>follow <span>@cestjojopieter</span> so you won't feel alone in learning french 🇫🇷</footer>
+</div>
+
+</body>
+</html>
